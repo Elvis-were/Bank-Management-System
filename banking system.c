@@ -3,6 +3,7 @@
 #include<errno.r>
 void creat()
 void addAccount{}
+void deposit();
 int main()
 {
   printf("Hello World");
