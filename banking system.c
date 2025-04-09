@@ -1,12 +1,13 @@
 #include<stdio.h>
 #include<string.h>
-#include<errno.r>
+#include<errno.h>
 #include<stdlib.h>
+#define MAX_ACCOUNT 100
 void createAccount();
-void deposit();
-void withdraw();
+void depositCash();
+void withdrawCash();
 int main()
 {
-  
+ int choice; 
   return 0;
 }
