@@ -4,6 +4,7 @@
 #include<stdlib.h>
 void createAccount();
 void deposit();
+void displayAllAccounts();
 void withdraw();
 int main()
 {
