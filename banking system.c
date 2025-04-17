@@ -49,6 +49,7 @@ void createAccount()
 }
 void deposit();
 void displayAllAccounts();
+void searchAccount();
 void withdraw();
 int main()
 {
