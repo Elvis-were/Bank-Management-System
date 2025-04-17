@@ -56,3 +56,41 @@ int main()
   
   return 0;
 }
+#include <stdio.h>
+#include <string.h>
+
+typedef struct {
+    char owner[100];
+    double balance;
+} BankAccount;
+
+void init_account(BankAccount *acc, const char *owner, double balance) {
+    strcpy(acc->owner, owner);
+    acc->balance = balance;
+}
+
+void deposit(BankAccount *acc, double amount, char *message, size_t size) {
+    if (amount <= 0) {
+        snprintf(message, size, "Deposit amount must be positive.");
+        return;
+    }
+    acc->balance += amount;
+    snprintf(message, size, "Deposited $%.2f. New balance: $%.2f", amount, acc->balance);
+}
+
+void withdraw(BankAccount *acc, double amount, char *message, size_t size) {
+    if (amount <= 0) {
+        snprintf(message, size, "Withdrawal amount must be positive.");
+        return;
+    }
+    if (amount > acc->balance) {
+        snprintf(message, size, "Insufficient funds.");
+        return;
+    }
+    acc->balance -= amount;
+    snprintf(message, size, "Withdrew $%.2f. New balance: $%.2f", amount, acc->balance);
+}
+
+void print_account(const BankAccount *acc) {
+    printf("BankAccount(owner='%s', balance=$%.2f)\n", acc->owner, acc->balance);
+}
