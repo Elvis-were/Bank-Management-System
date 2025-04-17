@@ -2,6 +2,7 @@
 #include<string.h>
 #include<errno.h>
 #include<stdlib.h>
+#define FILE_NAME "accounts.dat"
 typedef struct {
     int accountNumber;
     char name[100];
