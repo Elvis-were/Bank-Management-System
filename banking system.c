@@ -2,7 +2,10 @@
 #include<string.h>
 #include<errno.h>
 #include<stdlib.h>
-void createAccount();
+void createAccount()
+{
+  
+}
 void deposit();
 void displayAllAccounts();
 void withdraw();
