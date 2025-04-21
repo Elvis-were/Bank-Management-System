@@ -49,7 +49,28 @@ void createAccount()
 }
 void deposit()
 {
-    
+int accNum;
+    float amount;
+
+    printf("\n==============================\n");
+    printf("           DEPOSIT            \n");
+    printf("==============================\n");
+
+    printf("Enter Account Number    : ");
+    if (scanf("%d", &accNum) != 1) {
+        printf("Invalid input.\n");
+        while (getchar() != '\n');
+        return;
+    }
+
+    printf("Enter Amount to Deposit : ");
+    if (scanf("%f", &amount) != 1) {
+        printf("Invalid input.\n");
+        while (getchar() != '\n');
+        return;
+    }
+
+    updateAccountBalance(accNum, amount, 1);  
 }
 void displayAllAccounts();
 void searchAccount();
