@@ -74,7 +74,10 @@ int accNum;
 }
 void displayAllAccounts();
 void searchAccount();
-void deleteAccount();
+void deleteAccount()
+{
+    
+}
 void withdraw()
 {
 int accNum;
