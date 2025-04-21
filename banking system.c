@@ -51,7 +51,29 @@ void deposit();
 void displayAllAccounts();
 void searchAccount();
 void deleteAccount();
-void withdraw();
+void withdraw() 
+{
+    int accNum;
+    float amount;
+
+    printf("\n==============================\n");
+    printf("          WITHDRAW            \n");
+    printf("==============================\n");
+
+    printf("Enter Account Number     : ");
+    if (scanf("%d", &accNum) != 1) {
+        printf("Invalid input.\n");
+        while (getchar() != '\n');
+        return;
+    }
+
+    printf("Enter Amount to Withdraw : ");
+    if (scanf("%f", &amount) != 1) {
+        printf("Invalid input.\n");
+        while (getchar() != '\n');
+        return;
+    }
+
 int main()
 {
   
