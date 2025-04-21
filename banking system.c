@@ -51,7 +51,10 @@ void deposit();
 void displayAllAccounts();
 void searchAccount();
 void deleteAccount();
-void withdraw();
+void withdraw()
+{
+    
+}
 
 int main()
 {
