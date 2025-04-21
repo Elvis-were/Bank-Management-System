@@ -47,7 +47,10 @@ void createAccount()
     fclose(fp);
     printf("Account created successfully.\n");
 }
-void deposit();
+void deposit()
+{
+    
+}
 void displayAllAccounts();
 void searchAccount();
 void deleteAccount();
