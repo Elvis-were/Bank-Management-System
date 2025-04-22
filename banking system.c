@@ -76,7 +76,53 @@ void displayAllAccounts();
 void searchAccount();
 void deleteAccount()
 {
-    
+   int accNum, found = 0;
+    Account acc;
+
+    printf("\n==============================\n");
+    printf("        DELETE ACCOUNT        \n");
+    printf("==============================\n");
+
+    printf("Enter Account Number to delete: ");
+    if (scanf("%d", &accNum) != 1) {
+        printf("Invalid input.\n");
+        while (getchar() != '\n');
+        return;
+    }
+
+    FILE *fp = fopen(FILE_NAME, "rb");
+    if (fp == NULL) {
+        perror("Error opening file");
+        return;
+    }
+
+    FILE *temp = fopen("temp.dat", "wb");
+    if (temp == NULL) {
+        perror("Error creating temporary file");
+        fclose(fp);
+        return;
+    }
+
+    while (fread(&acc, sizeof(Account), 1, fp)) {
+        if (acc.accountNumber != accNum) {
+            fwrite(&acc, sizeof(Account), 1, temp);
+        } else {
+            found = 1;
+        }
+    }
+    fclose(fp);
+    fclose(temp);
+
+    if (remove(FILE_NAME) != 0 || rename("temp.dat", FILE_NAME) != 0) {
+        perror("Error updating account file");
+        return;
+    }
+
+    if (found)
+        printf("Account deleted successfully.\n");
+    else
+        printf("Account not found.\n");
+ 
 }
 void withdraw()
 {
