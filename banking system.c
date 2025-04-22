@@ -72,7 +72,10 @@ int accNum;
 
     updateAccountBalance(accNum, amount, 1);  
 }
-void displayAllAccounts();
+void displayAllAccounts()
+{
+    
+}
 void searchAccount();
 void updateAccountBalance(int accNum, float amount, int isDeposit)
 {
