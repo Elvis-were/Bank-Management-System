@@ -98,7 +98,10 @@ void displayAllAccounts()
         printf("No accounts found.\n");
     } 
 }
-void searchAccount();
+void searchAccount()
+{
+    
+}
 void updateAccountBalance(int accNum, float amount, int isDeposit)
 {
      Account acc;
