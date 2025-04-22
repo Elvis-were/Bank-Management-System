@@ -74,7 +74,29 @@ int accNum;
 }
 void displayAllAccounts()
 {
-    
+ FILE *fp = fopen(FILE_NAME, "rb");
+    if (fp == NULL) {
+        perror("Error opening file");
+        return;
+    }
+
+    Account acc;
+    int count = 0;
+
+    printf("\n==============================\n");
+    printf("      ALL BANK ACCOUNTS       \n");
+    printf("==============================\n");
+
+    while (fread(&acc, sizeof(Account), 1, fp)) {
+        displayAccount(acc);
+        count++;
+    }
+
+    fclose(fp);
+
+    if (count == 0) {
+        printf("No accounts found.\n");
+    } 
 }
 void searchAccount();
 void updateAccountBalance(int accNum, float amount, int isDeposit)
