@@ -74,7 +74,7 @@ int accNum;
 }
 void displayAllAccounts();
 void searchAccount();
-void updateAccountBalance()
+void updateAccountBalance(int accNum, float amount, int isDeposit)
 {
      Account acc;
     int found = 0;
