@@ -74,6 +74,38 @@ int accNum;
 }
 void displayAllAccounts();
 void searchAccount();
+void updateAccountBalance()
+{
+     Account acc;
+    int found = 0;
+    FILE *fp = fopen(FILE_NAME, "rb+");
+
+    if (fp == NULL) {
+        perror("Error opening file");
+        return;
+    }
+
+    while (fread(&acc, sizeof(Account), 1, fp)) {
+        if (acc.accountNumber == accNum) {
+            found = 1;
+            if (!isDeposit && acc.balance < amount) {
+                printf("Insufficient balance.\n");
+                fclose(fp);
+                return;
+            }
+
+            acc.balance += isDeposit ? amount : -amount;
+            fseek(fp, -sizeof(Account), SEEK_CUR);
+            fwrite(&acc, sizeof(Account), 1, fp);
+            printf("Transaction successful. New balance: %.2f\n", acc.balance);
+            break;
+        }
+    }
+
+    fclose(fp);
+    if (!found)
+        printf("Account not found.\n");
+}
 void deleteAccount()
 {
    int accNum, found = 0;
