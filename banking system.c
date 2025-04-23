@@ -279,8 +279,9 @@ void dashboard()
                 break;
             case 3: deleteAccount(); 
                 break;
-            case 4: deposit(); break;
-            case 5: withdraw(); 
+            case 4: depositAmount(); 
+                break;
+            case 5: withdrawAmount(); 
                 break;
             case 6: displayAllAccounts(); 
                 break;
