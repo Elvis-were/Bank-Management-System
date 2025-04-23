@@ -49,7 +49,7 @@ void createAccount()
     printf("Account created successfully.\n");
 }
 //function to deposit
-void deposit()
+void depositAmount()
 {
 int accNum;
     float amount;
@@ -191,7 +191,7 @@ void deleteAccount()
  
 }
 //function to withdraw
-void withdraw()
+void withdrawAmount()
 {
 int accNum;
     float amount;
