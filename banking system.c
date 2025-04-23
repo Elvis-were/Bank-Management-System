@@ -1,3 +1,4 @@
+//prepocessor directives
 #include<stdio.h>
 #include<string.h>
 #include<errno.h>
@@ -8,7 +9,7 @@ typedef struct {
     char name[100];
     float balance;
 } Account;
-
+//function to create account
 void createAccount()
 {
   Account acc;
@@ -47,6 +48,7 @@ void createAccount()
     fclose(fp);
     printf("Account created successfully.\n");
 }
+//function to deposit
 void deposit()
 {
 int accNum;
@@ -72,6 +74,7 @@ int accNum;
 
     updateAccountBalance(accNum, amount, 1);  
 }
+//functiom to list all accounts in the system
 void displayAllAccounts()
 {
  FILE *fp = fopen(FILE_NAME, "rb");
@@ -98,10 +101,12 @@ void displayAllAccounts()
         printf("No accounts found.\n");
     } 
 }
+//function to search for an account 
 void searchAccount()
 {
     
 }
+//function to update the customers information
 void updateAccountBalance(int accNum, float amount, int isDeposit)
 {
      Account acc;
@@ -134,6 +139,7 @@ void updateAccountBalance(int accNum, float amount, int isDeposit)
     if (!found)
         printf("Account not found.\n");
 }
+//function to delete an account
 void deleteAccount()
 {
    int accNum, found = 0;
@@ -184,6 +190,7 @@ void deleteAccount()
         printf("Account not found.\n");
  
 }
+//function to withdraw
 void withdraw()
 {
 int accNum;
@@ -209,9 +216,50 @@ int accNum;
 
     updateAccountBalance(accNum, amount, 0);    
 }
+//function to display the dashboard
+void dashboard()
+{
+     int choice;
+    do {
+        printf("\n==============================\n");
+        printf("     BANK MANAGEMENT SYSTEM   \n");
+        printf("==============================\n");
+        printf("1. Create Account\n");
+        printf("2. Search Account\n");
+        printf("3. Delete Account\n");
+        printf("4. Deposit\n");
+        printf("5. Withdraw\n");
+        printf("6. Display All Accounts\n");
+        printf("7. Exit\n");
+        printf("------------------------------\n");
+        printf("Enter your choice: ");
 
+        if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter a number.\n");
+            while (getchar() != '\n'); // clear the input buffer
+            continue;
+        }
+
+        switch (choice) {
+            case 1: createAccount(); 
+                break;
+            case 2: searchAccount(); 
+                break;
+            case 3: deleteAccount(); 
+                break;
+            case 4: deposit(); break;
+            case 5: withdraw(); 
+                break;
+            case 6: displayAllAccounts(); 
+                break;
+            case 7: printf("Exiting the system...\n"); 
+                break;
+            default: printf("Invalid choice. Try again.\n");
+        }
+    } while (choice != 7);
+}
 int main()
 {
-  
+ dashboard(); 
   return 0;
 }
