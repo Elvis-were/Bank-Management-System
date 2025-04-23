@@ -104,7 +104,39 @@ void displayAllAccounts()
 //function to search for an account 
 void searchAccount()
 {
-    
+ int accNum;
+    Account acc;
+    int found = 0;
+
+    printf("\n==============================\n");
+    printf("        SEARCH ACCOUNT        \n");
+    printf("==============================\n");
+
+    printf("Enter Account Number to search: ");
+    if (scanf("%d", &accNum) != 1) {
+        printf("Invalid input. Please enter a valid number.\n");
+        while (getchar() != '\n');
+        return;
+    }
+
+    FILE *fp = fopen(FILE_NAME, "rb");
+    if (fp == NULL) {
+        perror("Error opening file");
+        return;
+    }
+
+    while (fread(&acc, sizeof(Account), 1, fp)) {
+        if (acc.accountNumber == accNum) {
+            displayAccount(acc);
+            found = 1;
+            break;
+        }
+    }
+    fclose(fp);
+
+    if (!found) {
+        printf("Account not found.\n");
+    }   
 }
 //function to update the customers information
 void updateAccountBalance(int accNum, float amount, int isDeposit)
