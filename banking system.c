@@ -220,7 +220,7 @@ void deleteAccount()
     if (found)
         printf("Account deleted successfully.\n");
     else
-        printf("Account not found.\n");
+        printf("Account not found.\n");
  
 }
 //function to withdraw
@@ -249,7 +249,7 @@ int accNum;
 
     updateAccountBalance(accNum, amount, 0);    
 }
-//function to display the dashboard
+//function to display the dashboard which is also the menu
 void dashboard()
 {
      int choice;
