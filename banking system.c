@@ -3,7 +3,8 @@
 #include<string.h>
 #include<errno.h>
 #include<stdlib.h>
-#define FILE_NAME "accounts.dat"
+#define FILE_NAME "accountsdata.dat"
+//defining the struct using typedef
 typedef struct {
     int accountNumber;
     char name[100];
@@ -26,13 +27,13 @@ void createAccount()
     printf("Enter Account Number : ");
     if (scanf("%d", &acc.accountNumber) != 1) {
         printf("Invalid input. Please enter a valid number.\n");
-        while (getchar() != '\n'); // clear buffer
+        while (getchar() != '\n'); 
         fclose(fp);
         return;
     }
 
     printf("Enter Name           : ");
-    getchar(); // consume leftover newline
+    getchar(); // consume the input buffer
     fgets(acc.name, sizeof(acc.name), stdin);
     acc.name[strcspn(acc.name, "\n")] = 0;
 
@@ -293,6 +294,7 @@ void dashboard()
 }
 int main()
 {
+    //the dashboard function displays the menu
  dashboard(); 
   return 0;
 }
